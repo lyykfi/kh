@@ -95,7 +95,7 @@
 								<% _.each(halls, function(hallItem) { %>
 									<% i++; %>
 									<% if(i < 2) { %>
-										<strong><img src="./images/bugaiskii.jpg" alt="" /><%= hallItem.fio %></strong>
+										<strong><img src="<%= hallItem.photo %>" alt="" /><%= hallItem.fio %></strong>
 										<p><%= hallItem.text %></p>
 									<% } %>
 								<% }); %>
@@ -1234,9 +1234,13 @@
 				<li class="hall-item"><a href="#!/hall">Доска почета</a></li>
 				<li class="event-item"><a href="#!/event">События</a></li>
 			</ul>
+			<p id="user-info"></p>
+		</script>
+		<script id="userinfo-template" type="text/template">
+			Добро пожадовать: <%= window.user.fio %><br />Должность: <%= window.user.dol %>
 		</script>
 		<script id="seacontent-template" type="text/template">
-			<div class="gray_box" style="width: 100%;">
+			<div class="gray_box" style="width: 1000px;">
 				<div class="in">
 					<table>
 						<thead>

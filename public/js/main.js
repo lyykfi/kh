@@ -372,14 +372,6 @@ $(document).ready(function() {
     }
   );
 
-  $.get(
-    "/api/auth/client/status",
-    function(data) {
-      if(data.status == "ok") {
-        window.clientUser = data.user;
-      }
-    }
-  );
   var topNav = new TopnavView();
   $('#topnav-widget').html(topNav.render().el);
 

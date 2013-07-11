@@ -836,3 +836,11 @@ footer p {
 	padding: 3px;
 	position: relative;
 }
+
+#user-info {
+	float: right;
+}
+
+.seacontent table {
+	overflow-x: auto;
+}
