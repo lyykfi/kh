@@ -8,16 +8,13 @@ var Sdi = function () {
     var self = this;
     this.respondsWith = ['json', 'js'];
 
-    var connectData = { "hostname": "localhost", "user": "SCAdmin", "password": "masterkey", "database": "XE", "encoding":"windows-1251" };
+    var connectData = { "hostname": "localhost", "user": "SCAdmin", "password": "masterkey", "database": "XE" };
 
     oracle.connect(connectData, function(err, connection) {
+      console.log(err);
       // selecting rows
-      connection.execute("SELECT * FROM SYS.RDM_GROUPS", [], function(err, results) {
-        results.forEach(function(value, key) {
-          var iconv = new Iconv('UTF-8', 'CP1251');
-          console.log(results[key]["NAME"]);
-          results[key]["NAME"] = iconv.convert(results[key]["NAME"]).toString("utf-8");
-        });
+      connection.execute("SELECT * FROM RDM_GROUPS", [], function(err, results) {
+        console.log(results);
         connection.close();
         self.respond({"results": results});
       });
