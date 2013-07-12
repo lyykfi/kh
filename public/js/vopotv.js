@@ -60,8 +60,6 @@ var VopotvAddView = Backbone.View.extend({
     $(this.el).append(this.vootaddf.el);
     this.vootaddf.setElement(this.$(".vopotvaddf-widget")).render();
 
-    $(this.el).append(this.st.el);
-    this.st.setElement(this.$(".vopotvst-widget")).render();
 
     if(window.user.id) {
       $(this.el).append(this.vopotvadmin.el);
@@ -172,7 +170,7 @@ var VootaddfView = Backbone.View.extend({
     params.pub = 0;
 
     var error = false;
-    $(".error").fadeOut();
+    $(".errors").fadeOut();
 
     if(params.questnavId == 0 || 
       params.parent1Id == 0 || 
@@ -183,7 +181,7 @@ var VootaddfView = Backbone.View.extend({
       params.quest.length == 0) {
       error = true;
       
-      $(".error-not").fadeIn();
+      $(".errors").fadeIn();
     } else {
       $.post(
         "/api/quest/create",

@@ -64,18 +64,19 @@ a {
 #topmenu {
 	height: 47px;
 	width: 904px;
-	margin-top: 276px;
+	margin-top: 230px;
 	text-align: center;
-	text-transform: uppercase;
 }
 #topmenu li {
 	display: inline-block;
-	padding: 0px 40px 5px 40px;
+	max-width: 180px;
+	text-align: left;
 }
 #topmenu li a {
 	color: #000000;
 	text-decoration: none;
-	font-size: 11px;
+	font-size: 13px;
+	padding-top: 5px;
 }
 #topmenu li a:hover {
 	text-decoration: underline;

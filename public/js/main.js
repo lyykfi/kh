@@ -1,5 +1,3 @@
-$.ajaxSetup({ cache: false });
-
 var Controller = Backbone.Router.extend({
     routes: {
         "": "start",
@@ -45,12 +43,8 @@ var Controller = Backbone.Router.extend({
     },
 
     after: function(route, params) {
-        $('#topmenu a').removeClass("current");
-        $('#topmenu a[href="#'+route+'"]').addClass("current");
-    },
-    after: function(route, params) {
-        $('#topmenu a').removeClass("current");
-        $('#topmenu a[href="#'+route+'"]').addClass("current");
+        $('#topmenu li').removeClass("active");
+        $('#topmenu a[href="#'+route+'"]').parent().addClass("active");
     },
     start: function() {
         var start = new StartView();

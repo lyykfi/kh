@@ -2,6 +2,7 @@
 <html ng-app>
 	<head>
 		<meta charset="utf-8" />
+		<link rel="stylesheet" href="./css/bootstrap.min.css" />
 		<link rel="stylesheet" href="./css/main.css" />
 		<title></title>
 
@@ -292,7 +293,7 @@
 					<div class="gray_box">
 					<div class="in">
 						<h3>Фильтр по году выпуска</h3>
-						<select name="">
+						<select name="" style="width: 100px;">
 							<option value="0">Все</option>
 							<option value="2013">2013</option>
 						</select>
@@ -451,11 +452,11 @@
 						<form action="/api/event/create" method="post" accept-charset="utf-8" class="form">
 							<p>
 								<label for="login_login">Логин</label>
-								<input id="login_login" type="text" name="title" value="" />
+								<input id="login_login" type="text" class="input-small" name="title" value="" />
 							</p>
 							<p>
 								<label for="login_passw">Пароль</label>
-								<input id="login_passw" type="password" name="title" value="" />
+								<input id="login_passw" type="password" class="input-small" name="title" value="" />
 							</p>
 							<p>
 								<label></label>
@@ -464,7 +465,7 @@
 							</p>
 							<p>
 								<label></label>
-								<input type="button" name="" id="logining" value="Войти" />
+								<input type="button" name="" id="logining" class="btn btn-success" value="Войти" />
 							</p>
 							<div class="errors">
 								<p class="error-login error">Необходимо указать логин.</p>
@@ -775,7 +776,9 @@
 				<div class="in">
 					<form action="index_submit" method="get" accept-charset="utf-8" class="form">
 						<h2>Задать вопрос</h2>
-						<div class="angst" style="color: red; position: relative; left: 0px; right: auto; margin-top: 10px; margin-bottom: 0px; height: 60px;"> <p>Внимание! Все поля обязательны для заполнения!</p></div>
+						<div class="angst" style="position: relative; left: 0px; right: auto; margin-top: 10px; margin-bottom: 0px; height: 60px;"> 
+							<span class="label label-important">Внимание! Все поля обязательны для заполнения!</span>
+						</div>
 						<div class="send">
 							<p>Категория</p>
 							<span class="navselect-widget"></span>
@@ -804,9 +807,10 @@
 							<p>Текст вопроса</p>
 							<textarea id="add_question_quest" style="width: 100%;"></textarea>
 						</div>
-						<input type="button" id="addQuest" style="margin-left: 20px;" value="Задать вопрос" />
-						<div class="errors">
-							<p class="error error-not">Все поля необходимо заполнить.</p>
+						<input type="button" id="addQuest" class="btn btn-primary" style="margin-left: 20px;" value="Задать вопрос" />
+						<br /><br />
+						<div class="errors alert" style="display: none;">
+							Все поля необходимо заполнить.
 						</div>
 					</form>
 				</div>
@@ -1230,13 +1234,18 @@
 		</script>
 		
 		<script id="topnav-template" type="text/template">
-			<ul id="topnav">
-				<li class="enter-item"><a href="#!/login">Регистрация</a></li>
-				<li class="exit-item"><a href="#!/logout">Выйти</a></li>
-				<li class="hall-item"><a href="#!/hall">Доска почета</a></li>
-				<li class="event-item"><a href="#!/event">События</a></li>
-			</ul>
-			<p id="user-info"></p>
+			<div class="navbar">
+			  <div class="navbar-inner">
+				<ul class="nav">
+					<li class="enter-item"><a href="#!/login">Регистрация</a></li>
+					<li class="exit-item"><a href="#!/logout">Выйти</a></li>
+					<li class="hall-item"><a href="#!/hall">Доска почета</a></li>
+					<li class="event-item"><a href="#!/event">События</a></li>
+				</ul>
+				<p id="user-info"></p>
+			  </div>
+			</div>
+			
 		</script>
 		<script id="userinfo-template" type="text/template">
 			Добро пожадовать: <%= window.user.fio %><br />Должность: <%= window.user.dol %>
@@ -1244,7 +1253,7 @@
 		<script id="seacontent-template" type="text/template">
 			<div class="gray_box" style="width: 1000px;">
 				<div class="in">
-					<table>
+					<table class="table table-striped table-hover table-bordered">
 						<thead>
 							<tr>
 								<% _.each(tree[0].cols, function(treeItem) { %>
@@ -1627,7 +1636,7 @@
 			<% if(window.user.id) { %>
 				<% if(window.user.roleId == 10) { %>
 				<div class="doc-list-items" style="display: block;">
-					<table class="list_doc">
+					<table class="table table-striped table-hover table-bordered">
 						<thead>
 							<tr>
 								<th>Название</th>
@@ -1667,7 +1676,7 @@
 						</tbody>
 					</table>
 					<hr />
-					<input type="button" id="add_file_show" value="Согласовать новый документ" placeholder="" />
+					<input type="button" id="add_file_show" class="btn btn-primary" value="Согласовать новый документ" placeholder="" />
 					<div class="add_file">
 						<br />
 						<hr />
@@ -1695,14 +1704,14 @@
 								</select>
 							</label><br /><br />
 							<br />
-							<input type="submit" id="onLoadDoc" name="" value="Ок" />
-							<input type="submit" id="onLoadDocCancel" name="" value="Отменить" />
+							<input type="submit" id="onLoadDoc" class="btn btn-success" name="" value="Ок" />
+							<input type="submit" id="onLoadDocCancel" class="btn btn-danger" name="" value="Отменить" />
 						</form>
 					</div>
 				<% } %>
 				<% if(window.user.roleId == 11 || window.user.roleId == 12 || window.user.roleId == 13) { %>
 					<div class="doc-list-items" style="display: block;">
-					<table class="list_doc">
+					<table class="table table-striped table-hover table-bordered">
 						<thead>
 							<tr>
 								<th>Название</th>
@@ -1756,10 +1765,10 @@
 									<input type="hidden" id="docId" name="id" value="<%= docItem.id %>" placeholder="" />
 									<label>Инициатор: <strong style="font-weight: bold;">Иваненко С. А.</strong></label><br /><br />
 									<label>Название: <strong style="font-weight: bold;"><%= docItem.title %></strong></label><br /><br />
-									<label>Скачать: <a href="/upload/<%= docItem.file %>" style="font-weight: bold;">Файл</a></label><br /><br />
+									<label>Файл: <a href="/upload/<%= docItem.file %>" style="font-weight: bold;">Скачать</a></label><br /><br />
 									<label>Комментарий:<br /> <textarea style="width: 80%; height: 100px;" name="commentText" id="commentText"></textarea></label><br /><br />
-									<input type="button" id="access" name="" value="Согласовать" />
-									<input type="button" id="deny" name="" value="Вернуть на доработку" />
+									<input type="button" id="access" name="" value="Согласовать" class="btn btn-success" />
+									<input type="button" id="deny" name="" value="Вернуть на доработку" class="btn btn-danger" />
 								</form>
 							</div>
 						<% } %>
@@ -1817,21 +1826,30 @@
 		</script>
 
 		<script id="docnodes-template" type="text/template">
-			<h2>Комментарии</h2>
+			<% var count = 0; %>
 			<% _.each(comments, function(comItem) { %>
 				<% if(comItem.docId == id) { %>
-					<p style="font-weight: bold">Автор: Начальник цеха</p>
-					<p><%= comItem.text %></p>
-					<br /><br /><br />
+					<% count++ %>
 				<% } %>
 			<% }); %>
+			<% if(count > 0) { %>
+				<hr />
+				<h2>Комментарии</h2>
+				<% _.each(comments, function(comItem) { %>
+					<% if(comItem.docId == id) { %>
+						<p style="font-weight: bold">Автор: Начальник цеха</p>
+						<p><%= comItem.text %></p>
+						<br /><br /><br />
+					<% } %> 
+				<% }); %>
+			<% } %>
 		</script>
 
 		<script id="doclist-template" type="text/template">
 			<a href="#!/structure/view/<%= id %>" title="">Назад</a><br /><br />
 			
 			<div class="doc-list-items" style="display: block;">
-				<table class="list_doc">
+				<table class="table table-striped table-hover table-bordered">
 					<thead>
 						<tr>
 							<th>Название</th>
@@ -1861,7 +1879,7 @@
 
 		<script id="doclista-template" type="text/template">
 			<div class="doc-list-items" style="display: block;	">
-				<table class="list_doc">
+				<table class="table table-striped table-hover table-bordered">
 					<thead>
 						<tr>
 							<th>Название</th>
@@ -1983,14 +2001,20 @@
 			<div id="page_sub">
 				<header id="head">
 					<div id="topnav-widget"></div>
-					<ul id="topmenu">
-						<li><a href="#!/" class="current">Главная</a></li>
-						<li><a href="#!/news">Новости</a></li>
-						<li><a href="#!/questions">Руководство: Вопросы и ответы</a></li>
-						<li><a href="#!/structure">Организационно-штатная структура</a></li>
-						<li><a href="#!/super">Корпоративные информационные ресурсы</a></li>
-						<li><a href="#!/newspaper">Газета "Всё для Родины"</a></li>
-					</ul>
+					<div id="topmenu">
+						<div class="navbar">
+						  <div class="navbar-inner">
+						    <ul class="nav">
+						    	<li><a href="#!/" class="active">Главная</a></li>
+								<li><a href="#!/news">Новости</a></li>
+								<li><a href="#!/questions">Руководство:<br /> Вопросы и ответы</a></li>
+								<li><a href="#!/structure">Организационно-штатная структура</a></li>
+								<li><a href="#!/super">Корпоративные информационные ресурсы</a></li>
+								<li><a href="#!/newspaper">Газета "Всё для Родины"</a></li>
+						    </ul>
+						  </div>
+						</div>
+					</div>
 					<h1></h1>
 				</header>
 				<div id="content">
@@ -2015,6 +2039,8 @@
 		<script type="text/javascript" src="./js/backbone.routefilter.min.js"></script>
 		<script type="text/javascript" src="./js/backbone-validation-min.js"></script>
 		<script type="text/javascript" src="./js/ckeditor/ckeditor.js"></script>
+		<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+		
 		
 		<script type="text/javascript" src="./js/newspaper.js"></script>
 		<script type="text/javascript" src="./js/hall.js"></script>
