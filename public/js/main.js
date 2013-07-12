@@ -1,3 +1,5 @@
+$.ajaxSetup({ cache: false });
+
 var Controller = Backbone.Router.extend({
     routes: {
         "": "start",
