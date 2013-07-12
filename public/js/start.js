@@ -39,7 +39,7 @@ var StartView = Backbone.View.extend({
   	this.startann.setElement(this.$(".startann-widget")).render();
     
     return this;
-  },
+  }
 });
 
 var StartnagView = Backbone.View.extend({

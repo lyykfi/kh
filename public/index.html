@@ -8,6 +8,9 @@
 		<!--[if lt IE 9]>
 			<script src="/js/html5shiv.js"></script>
 		<![endif]-->
+		<!--[if lt IE 9]>
+			<script type="text/javascript" src="/js/PIE_IE678.js"></script>
+		<![endif]-->
 	</head>
 	<body>
 
@@ -77,7 +80,6 @@
 									</article>
 								<% } %>
 							<% }); %>
-							<article>
 						</section>
 						<a href="#!/news" style="position: relative; left: 20px;">Все новости</a>
 					</div>
@@ -817,8 +819,8 @@
 					<ul class="admin">
 						<li data-status="-1"><a class="current all_news_ck">Все</a></li>
 						<ul class="status_list">
-							<li data-status="0"><a>Новые</a></li>
-							<li data-status="1"><a>В работе</a></li>
+							<li data-status="0" class="c1"><a>Новые</a></li>
+							<li data-status="1" class="c2"><a>В работе</a></li>
 							<li data-status="2"><a>Готовые</a></li>
 							<li data-status="3"><a>Корзина</a></li>
 							<li data-pub="1"><a>Опубликованные</a></li>
