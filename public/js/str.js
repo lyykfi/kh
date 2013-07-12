@@ -515,7 +515,7 @@ var DocView = Backbone.View.extend({
       this.doc.setElement(this.$(".doclist-widget")).render(this.parentId);
     } else {
       $(this.el).append(this.doca.el);
-      this.doca.setElement(this.$(".doclist-widget")).render(this.parentId);
+      this.doca.setElement(this.$(".doclist-widget")).render(this.parentId, this.id);
     }
     
     return this;
@@ -681,8 +681,8 @@ var DocListAView = Backbone.View.extend({
     this.docList.fetch();
   },
 
-  render: function () {
-    $(this.el).html(_.template(this.template, { user: window.clientUser, docs: this.docList.toJSON() }));
+  render: function (id, p) {
+    $(this.el).html(_.template(this.template, { user: window.clientUser, docs: this.docList.toJSON(), id: id, parentId: p }));
     
     return this;
   },
@@ -855,22 +855,10 @@ var StrtreeView = Backbone.View.extend({
     this.strList.fetch();
   },
 
-  render: function (id) {
-    $(this.el).html(_.template(this.template, { structs: this.strList.toJSON(), parentId: id }));
+  render: function (parentId, id) {
+    $(this.el).html(_.template(this.template, { structs: this.strList.toJSON(), parentId: parentId, id: id }));
     
     return this;
-  },
-
-  onTreeItem: function(e) {
-    if(!window.user.id) {
-      $(".tree_item").removeClass("current");
-      $(e.target).addClass("current");
-
-      $(".not").hide();
-      $(".doc-list-items").fadeIn();
-
-    }
-     $(".col1").hide();
   }
 });
 

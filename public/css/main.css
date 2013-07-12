@@ -839,8 +839,12 @@ footer p {
 
 #user-info {
 	float: right;
+	position: relative;
+	z-index: 10;
+	font-size: 12px;
+	padding-right: 20px;
 }
 
-.seacontent table {
-	overflow-x: auto;
+.seacontent .gray_box {
+	width: 100%;
 }

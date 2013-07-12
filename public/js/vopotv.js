@@ -213,7 +213,8 @@ var VopotvadminView = Backbone.View.extend({
 var VadminView = Backbone.View.extend({
   className: 'vadmin',
   events:  {
-    "click .status_list a": "onStatusChange"
+    "click .status_list a": "onStatusChange",
+    "click .all_news_ck": "onAll"
   },
 
   initialize: function () {
@@ -236,6 +237,9 @@ var VadminView = Backbone.View.extend({
       $(".let").fadeOut();
       $(".let[data-pub='"+pub+"']").fadeIn();  
     }
+  },
+  onAll: function(e) {
+    $(".let").fadeIn();
   }
 });
 

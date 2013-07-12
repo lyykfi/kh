@@ -82,8 +82,9 @@ var Sdi = function () {
         connection.execute("select rr.refname||'.'||rc.classname from rdm_classes rc, rdm_reference rr where (rc.guidparent='"+params.className+"')and(rc.fguid=rr.guid)", [], function(err2, results2) {
 
           connection.execute("call RDM_REQUEST_FORPORTAL('"+results2[0]["RR.REFNAME||\'.\'||RC.CLASSNAME"]+"','"+params.id+"','','"+parm+"',1)", [], function(err3, results3) {
-           
+              console.log("call RDM_REQUEST_FORPORTAL('"+results2[0]["RR.REFNAME||\'.\'||RC.CLASSNAME"]+"','"+params.id+"','','"+parm+"',1)");
               connection.execute("SELECT RESULT1 FROM TEMP_RESULT", [], function(err4, results4) {
+                console.log(results4);
                 connection.execute(results4[0]["RESULT1"], [], function(err4, results5) {
                   connection.close();
                   self.respond({results: {"cols": results, rows: results5}});

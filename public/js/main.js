@@ -342,6 +342,8 @@ var TopnavView = Backbone.View.extend({
       $(".hall-item").show();
       $(".event-item").show();  
     }
+    console.log(window.user);
+    $("#user-info").html("Добро пожаловать:"+window.user.fio+"<br />Должность: "+window.user.dol);
   },
 
   onLogouting: function() {

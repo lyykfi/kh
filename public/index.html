@@ -815,7 +815,7 @@
 			<div class="gray_box">
 				<div class="in">
 					<ul class="admin">
-						<li><a href="#" class="current">Все</a></li>
+						<li data-status="-1"><a class="current all_news_ck">Все</a></li>
 						<ul class="status_list">
 							<li data-status="0"><a>Новые</a></li>
 							<li data-status="1"><a>В работе</a></li>
@@ -1190,7 +1190,7 @@
 								<% _.each(groups, function(groupsItem) { %>
 									<li>
 										<img src="/images/folder.png" alt="" style="width: 60px;" />
-										<a href="#!/search/tree/250a3txX3_J.seL4UqJCKc" title=""><%= groupsItem.NAMESCREEN %></a>
+										<a href="#!/search/tree/<%= groupsItem.GUID %>" title=""><%= groupsItem.NAMESCREEN %></a>
 									</li>
 								<% }); %>
 							</ul>
@@ -1246,7 +1246,7 @@
 						<thead>
 							<tr>
 								<% _.each(tree[0].cols, function(treeItem) { %>
-									<th style="font-weight:bold; text-align: left; padding: 4px;"><%= treeItem.NAMESCREEN %></th>
+									<th style="font-weight:bold; font-size: 10px;  text-align: left; padding: 4px;"><%= treeItem.NAMESCREEN %></th>
 								<% }); %>
 							</tr>
 						</thead>
@@ -1259,7 +1259,7 @@
 									<% _.each(rowItem, function(rowItem2, key) { %>
 										<% if(key != "MATRLOCATION" && key != "DESCRIPTION" && key != "PICTURE" && key != "APPLY" && key != "ID" && key != "CHCNT_MARKA" && key != "TEMPLATE_NAME_TYPESIZE" && key != "GUID") { %>
 											
-											<td style="padding: 4px; <% if(i%2) { %>background: #bbbbbb;<% } %>"><%= rowItem2 %></td>
+											<td style="padding: 4px; font-size: 10px; <% if(i%2) { %>background: #bbbbbb;<% } %>"><%= rowItem2 %></td>
 										<% } %>
 									<% }); %>
 								</tr>
@@ -1267,6 +1267,37 @@
 							
 						</tbody>
 					</table>
+					<% console.log(tree[0].rows[0]["GUID"]) %>
+					<% if(tree[0].rows[0]["GUID"] == "t4aJJqaY100cNFOx0V3vbb") { %>
+						<br />
+						<hr />
+						<table>
+							<tr>
+								<td><img src="/upload/19.04-311.jpg" width="300px" /></td>
+								<td><img src="/upload/Image71.gif" width="300px"  /></td>
+								<td><img src="/upload/19.04-311.jpg" width="300px"  /></td>
+							</tr>
+						</table>
+					<% } %>
+					<% if(tree[0].rows[0]["GUID"] == "DJPKGsMF3xitkiLCdimXhb") { %>
+						<br />
+						<hr />
+						<table>
+							<tr>
+								<td><img src="/upload/19.04-311.jpg" width="300px" /></td>
+								<td><img src="/upload/Image71.gif" width="300px"  /></td>
+							</tr>
+						</table>
+					<% } %>
+					<% if(tree[0].rows[0]["GUID"] == "HPwd0qNkO0V.cbNzxsj2qd") { %>
+						<br />
+						<hr />
+						<table>
+							<tr>
+								<td><img src="/upload/Image71.gif" width="300px"  /></td>
+							</tr>
+						</table>
+					<% } %>
 				</div>
 			</div>
 		</script>
@@ -1616,9 +1647,9 @@
 											<% if (docItem.status == 0) { %>На согласовании<% } %>
 											<% if (docItem.status == 2) { %>
 												Вернули на доработку<br />
-												<a href="#!/structure/mydoc/<%= docItem.id %>" title="">Изменить документ</a>
 											<% } %>
 											<% if (docItem.status == 1) { %>Одобрено<% } %>
+											<a href="#!/structure/mydoc/<%= docItem.id %>" title="">Изменить документ</a>
 										</td>
 										<td>
 											<% if (docItem.access1 != 1) { %>Начальник отдела<% } %>
@@ -1796,6 +1827,7 @@
 
 		<script id="doclist-template" type="text/template">
 			<a href="#!/structure/view/<%= id %>" title="">Назад</a><br /><br />
+			
 			<div class="doc-list-items" style="display: block;">
 				<table class="list_doc">
 					<thead>
@@ -1806,26 +1838,18 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td><b class="lt">Должностная интрукция фрезировщика</b></td>
-							<td>10.10.2013</td>
-							<td><a href="" title="">Скачать</a></td>
-						</tr>
-						<tr class="col1">
-							<td><b class="lt">Меры пожарной безопасности</b></td>
-							<td>10.10.2013</td>
-							<td><a href="" title="">Скачать</a></td>
-						</tr>
-						<tr>
-							<td><b class="lt">Правила эксплуатирования оборудования</b></td>
-							<td>10.10.2013</td>
-							<td><a href="" title="">Скачать</a></td>
-						</tr>
-						<tr class="col1">
-							<td><b class="lt">Техническое описание процесса</b></td>
-							<td>10.10.2013</td>
-							<td><a href="" title="">Скачать</a></td>
-						</tr>
+						<% if(id == "4EE71D7B-66E7-410B-A02B-5D2A3B1F7455") { %>
+							<tr>
+								<td><b class="lt">Начальник бюро труда и заработной платы</b></td>
+								<td>24.01.2013</td>
+								<td><a href="" title="">Скачать</a></td>
+							</tr>
+							<tr>
+								<td><b class="lt">Ведущий экономист</b></td>
+								<td>24.01.2013</td>
+								<td><a href="" title="">Скачать</a></td>
+							</tr>
+						<% } %>
 					</tbody>
 				</table>
 				<br />
@@ -1844,26 +1868,87 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td><b class="lt">Должностная интрукция фрезировщика</b></td>
-							<td>10.10.2013</td>
-							<td><a href="" title="">Скачать</a></td>
-						</tr>
-						<tr class="col1">
-							<td><b class="lt">Меры пожарной безопасности</b></td>
-							<td>10.10.2013</td>
-							<td><a href="" title="">Скачать</a></td>
-						</tr>
-						<tr>
-							<td><b class="lt">Правила эксплуатирования оборудования</b></td>
-							<td>10.10.2013</td>
-							<td><a href="" title="">Скачать</a></td>
-						</tr>
-						<tr class="col1">
-							<td><b class="lt">Техническое описание процесса</b></td>
-							<td>10.10.2013</td>
-							<td><a href="" title="">Скачать</a></td>
-						</tr>
+						<% if(parentId == "00BF6CDA-D569-4E1A-81E8-E0175330E659") { %>
+							<tr>
+								<td><b class="lt">Начальник бюро труда и заработной платы</b></td>
+								<td>24.01.2013</td>
+								<td><a href="" title="">Скачать</a></td>
+							</tr>
+							<tr>
+								<td><b class="lt">Ведущий экономист</b></td>
+								<td>24.01.2013</td>
+								<td><a href="" title="">Скачать</a></td>
+							</tr>
+						<% } %>
+						<% if(parentId == "1F0FFFED-CD1B-44F2-9894-5F1A6FFF6FED") { %>
+							<tr>
+								<td><b class="lt">Начальник отдела эксплуатации средств управления космическими аппаратами</b></td>
+								<td>25.01.2013</td>
+								<td><a href="" title="">Скачать</a></td>
+							</tr>
+							<tr>
+								<td><b class="lt">Заместитель начальника отдела эксплуатации средств управления космическими аппаратами</b></td>
+								<td>24.01.2013</td>
+								<td><a href="" title="">Скачать</a></td>
+							</tr>
+							<tr>
+								<td><b class="lt">Ведущий инженер</b></td>
+								<td>24.01.2013</td>
+								<td><a href="" title="">Скачать</a></td>
+							</tr>
+							<tr>
+								<td><b class="lt">Инженер 1 категории</b></td>
+								<td>24.01.2013</td>
+								<td><a href="" title="">Скачать</a></td>
+							</tr>
+						<% } %>
+						<% if(parentId == "B1A759DD-C541-4B2E-B0DA-BB1C129217A2") { %>
+							<tr>
+								<td><b class="lt">Начальник сектора биллинга и обслуживания абонентов</b></td>
+								<td>25.01.2013</td>
+								<td><a href="" title="">Скачать</a></td>
+							</tr>
+							<tr>
+								<td><b class="lt">Инженер 1 кат.сектора биллинга и обслуживания абонентов</b></td>
+								<td>09.01.2013</td>
+								<td><a href="" title="">Скачать</a></td>
+							</tr>
+							<tr>
+								<td><b class="lt">Начальник сектора учета и экономического анализа корпоративных IT ресурсов</b></td>
+								<td>09.01.2013</td>
+								<td><a href="" title="">Скачать</a></td>
+							</tr>
+							<tr>
+								<td><b class="lt">Ведущий экономист сектора учета и экономического анализа корпоративных IT ресурсов</b></td>
+								<td>09.01.2013</td>
+								<td><a href="" title="">Скачать</a></td>
+							</tr>
+							<tr>
+								<td><b class="lt">Экономист 1 кат. сектора учета и экономического анализа корпоративных IT ресурсов</b></td>
+								<td>09.01.2013</td>
+								<td><a href="" title="">Скачать</a></td>
+							</tr>
+							<tr>
+								<td><b class="lt">Инженер 1 кат. сектора учета и экономического анализа корпоративных IT ресурсов</b></td>
+								<td>09.01.2013</td>
+								<td><a href="" title="">Скачать</a></td>
+							</tr>
+							<tr>
+								<td><b class="lt">Экономист группы обслуживания абонентов</b></td>
+								<td>09.01.2013</td>
+								<td><a href="" title="">Скачать</a></td>
+							</tr>
+							<tr>
+								<td><b class="lt">Начальник группы обслуживания абонентов</b></td>
+								<td>24.01.2013</td>
+								<td><a href="" title="">Скачать</a></td>
+							</tr>
+							<tr>
+								<td><b class="lt">Начальник группы документационного обеспечения</b></td>
+								<td>24.01.2013</td>
+								<td><a href="" title="">Скачать</a></td>
+							</tr>
+						<% } %>
 					</tbody>
 				</table>
 			</div>
@@ -1879,7 +1964,7 @@
 									<% _.each(structs, function(structs3Item) { %>
 										<% if(structs3Item.parentId == structs2Item.id && structs3Item.parentId == parentId) { %>
 											<li>
-												<a data-id="<%= structs3Item.id %>" class="tree_item"><%= structs3Item.title %></a>
+												<a href="#!/structure/document/<%= structs3Item.id %>/<%= structs3Item.parentId %>" data-id="<%= structs3Item.id %>" class="tree_item"><%= structs3Item.title %></a>
 											</li>
 										<% } %>
 									<% }); %>
