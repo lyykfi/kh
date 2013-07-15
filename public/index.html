@@ -74,9 +74,9 @@
 							<% _.each(news, function(newsItem) { %>
 								<% i++; %>
 								<% if(i < 3) { %>
-									<article data-newsnavid="<%= newsItem.newsnavId %>">
+									<article data-newsnav_id="<%= newsItem.newsnavId %>">
 										<h4><a href="#!/news/<%= newsItem.id %>"><%= newsItem.title %></a></h4>
-										<p class="date"><%= newsItem.createdAt.substr(0, 10) %></p>
+										<p class="date"><%= newsItem.created_at.substr(0, 10) %></p>
 										<p class="text"><%= newsItem.anonce %></p>
 									</article>
 								<% } %>
@@ -514,10 +514,7 @@
 		</script>
 		<script id="newsitem-template" type="text/template">
 			<div id="content">
-				<div id="left">
-					<div class="newsnav-widget"></div>
-				</div>
-				<div id="center">
+				<div id="center" style="width: 100%">
 					<div class="blue_box">
 						<div class="in">
 							<article class="news" id="newsitem">
@@ -536,9 +533,9 @@
 				<% _.each(news, function(newsItem) { %>
 					<div class="gray_box" style="width: 100%; margin-bottom: 25px;">
 						<div class="in">
-							<article data-newsnavid="<%= newsItem.newsnavId %>" style="margin-bottom: 0px;">
+							<article data-newsnavid="<%= newsItem.newsnav_id %>" style="margin-bottom: 0px;">
 								<a style="font-weight: bold;" href="#!/news/<%= newsItem.id %>"><%= newsItem.title %></a>
-								<p class="date"><%= newsItem.createdAt.substr(0, 10) %></p>
+								<p class="date"><%= newsItem.created_at.substr(0, 10) %></p>
 								<div class="text" style="width: 100%; float: none;"><%= newsItem.anonce %></div>
 								<% if(user.id && user.roleId != 10) { %>
 									<img style="width: 45px; position: absolute; right: 0px; top: 0px;" data-id="<%= newsItem.id %>" class="deleteButton deleteNews" src="./images/del.png" alt="" />
@@ -1045,7 +1042,7 @@
 						<p>
 							<input type="button" name="" id="strEnter" value="Войти" />
 						</p>
-						<br />
+						<br /> 
 						<div class="errors">
 							<p class="error-login error">Необходимо указать логин.</p>
 							<p class="error-passw error">Необходимо указать пароль.</p>
@@ -1424,7 +1421,7 @@
 					</div>
 				</div>
 				<div id="center">
-					<div class="blue_box">
+					<div class="blue_box" style="background: #ffffff;">
 						<div class="in">
 							<div class="doclist-widget"></div>
 						</div>
@@ -1447,7 +1444,7 @@
 					</div>
 				</div>
 				<div id="center">
-					<div class="blue_box">
+					<div class="blue_box" style="background: #ffffff;">
 						<div class="in">
 							<div class="mydoceditf-widget"></div>
 						</div>
@@ -1636,7 +1633,7 @@
 			<% if(window.user.id) { %>
 				<% if(window.user.roleId == 10) { %>
 				<div class="doc-list-items" style="display: block;">
-					<table class="table table-striped table-hover table-bordered">
+					<table class="table table-striped table-hover">
 						<thead>
 							<tr>
 								<th>Название</th>
@@ -1660,7 +1657,7 @@
 												Вернули на доработку<br />
 											<% } %>
 											<% if (docItem.status == 1) { %>Одобрено<% } %>
-											<a href="#!/structure/mydoc/<%= docItem.id %>" title="">Изменить документ</a>
+											<a href="#!/structure/mydoc/<%= docItem.id %>" class="label" style="padding: 0px;" title="">Изменить документ</a>
 										</td>
 										<td>
 											<% if (docItem.access1 != 1) { %>Начальник отдела<% } %>
@@ -1668,7 +1665,7 @@
 											<% if (docItem.access3 != 1 && docItem.access1 == 1 && docItem.access2 == 1) { %>Руководитель департамента труда и заработной платы<% } %>
 										</td>
 										<td>
-											<a style="padding-bottom: 2px;" href="/upload/<%= docItem.file %>" title="">Скачать</a>
+											<a style="padding-bottom: 2px;" href="/upload/<%= docItem.file %>" class="label" title="">Скачать</a>
 										</td>
 									</tr>
 								<% } %>
@@ -1801,8 +1798,8 @@
 								</select>
 							</label><br /><br />
 							<br />
-							<input type="submit" id="onLoadDoc" name="" value="Ок" />
-							<input type="submit" id="onLoadDocCancel" name="" value="Отменить" />
+							<input type="submit" id="onLoadDoc" class="btn btn-success" name="" value="Ок" />
+							<input type="submit" id="onLoadDocCancel" class="btn btn-danger" name="" value="Отменить" />
 						</form>
 						<% } %>
 					<% }); %>

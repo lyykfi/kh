@@ -17,7 +17,7 @@ var SearchView = Backbone.View.extend({
   	this.seabox.setElement(this.$(".seabox-widget")).render();
     
     return this;
-  },
+  }
 });
 
 var SeanavView = Backbone.View.extend({

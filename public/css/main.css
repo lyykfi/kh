@@ -279,7 +279,6 @@ footer p {
 }
 .blue_box .in .quiz_small section strong {
 	font-size: 18px;
-	text-decoration: underline;
 }
 
 .blue_box {
@@ -400,6 +399,7 @@ footer p {
 .blue_box .in article a {
 	margin-left: 500px;
 	cursor: pointer;
+	color: #000000;
 }
 
 .blue_box .in .news_list article, .blue_box .in #newsitem {
@@ -860,10 +860,24 @@ footer p {
 	float: right;
 	position: relative;
 	z-index: 10;
-	font-size: 12px;
+	font-size: 14px;
 	padding-right: 20px;
+	color: #777;
+	text-decoration: none;
+	text-shadow: 0 1px 0 #fff;
+	padding-top: 4px;
 }
 
 .seacontent .gray_box {
 	width: 100%;
+}
+
+.blue_box .in article p.date {
+	color: #666666;
+	font-size: 11px;
+}
+
+.blue_box .in article a.back {
+	margin: 0px;
+	font-size: 14px;
 }

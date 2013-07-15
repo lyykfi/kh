@@ -33,6 +33,6 @@ var SuperSubView = Backbone.View.extend({
     $(this.el).html(_.template(this.template, this.context));
 
     return this;
-  },
+  }
 });
 

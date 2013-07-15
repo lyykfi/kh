@@ -1,8 +1,5 @@
 var NewsView = Backbone.View.extend({
   className: 'news',
-  newsnav: null,
-  newsblue: null,
-  newsadmin: null,
 
   initialize: function () {
     this.template = $('#news-template').html();
@@ -26,7 +23,7 @@ var NewsView = Backbone.View.extend({
     }
    
     return this;
-  },
+  }
 });
 
 var NewsaddView = Backbone.View.extend({
@@ -35,8 +32,6 @@ var NewsaddView = Backbone.View.extend({
     "click #newsAdd": "onNewsAdd",
     "click #newsAddCancel": "onNewsAddCancel"
   },
-  newsnav: null,
-  newsadmin: null,
 
   initialize: function () {
     this.template = $('#newsadd-template').html();
@@ -76,8 +71,6 @@ var NewsnavaddView = Backbone.View.extend({
     "click #newsnavAdd": "onNewsnavAdd",
     "click #newsnavAddCancel": "onNewsnavAddCancel"
   },
-  newsnav: null,
-  newsadmin: null,
 
   initialize: function () {
     this.template = $('#newsnavadd-template').html();
@@ -199,7 +192,7 @@ var NewsnavSelectView = Backbone.View.extend({
     $(this.el).html(_.template(this.template, { newsnav: this.newsnavList.toJSON() } ));
     
     return this;
-  },
+  }
 });
 
 var NewsblueView = Backbone.View.extend({
@@ -242,6 +235,7 @@ var NewsboxView = Backbone.View.extend({
   },
 
   render: function () {
+    console.log(this.newsList.toJSON());
     $(this.el).html(_.template(this.template, { news: this.newsList.toJSON(), user: window.user } ));
     
     return this;
@@ -290,7 +284,13 @@ var NewsModel = Backbone.Model.extend();
 
 var NewsList = Backbone.Collection.extend({
    model: NewsModel,
-   url: '/api/news',
+   /*sync: function(method, model, options) {  
+        options.timeout = 10000;
+        options.dataType = "jsonp";
+        options.jsonp = "callback";        
+        return Backbone.sync(method, model, options);
+   },*/
+   url: 'http://192.168.0.15:3000/news',
    parse: function(response, xhr) {
       return response.news;
    }
@@ -300,9 +300,15 @@ var NewsnavModel = Backbone.Model.extend();
 
 var NewsnavList = Backbone.Collection.extend({
    model: NewsnavModel,
-   url: '/api/newsnav',
+   /*sync: function(method, model, options) {  
+        options.timeout = 10000;
+        options.dataType = "jsonp";
+        options.jsonp = "callback";        
+        return Backbone.sync(method, model, options);
+   },*/
+   url: '/api/newsnav/',
    parse: function(response, xhr) {
-      return response.newsnav;
+      return response.newsnavs;
   }
 });
 
@@ -310,6 +316,7 @@ var NewsitemModel = Backbone.Model.extend();
 
 var NewsitemList = Backbone.Collection.extend({
    model: NewsitemModel,
+
    initialize: function(models, options) {
     this.id = options.id;
     this.url = '/api/news/'+this.id;

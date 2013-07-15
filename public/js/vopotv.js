@@ -37,7 +37,7 @@ var VopotvView = Backbone.View.extend({
     }
     
     return this;
-  },
+  }
 });
 
 var VopotvAddView = Backbone.View.extend({
@@ -67,7 +67,7 @@ var VopotvAddView = Backbone.View.extend({
     }
     
     return this;
-  },
+  }
 });
 
 var QuestnavAddView = Backbone.View.extend({
@@ -124,7 +124,7 @@ var QuestnavAddfView = Backbone.View.extend({
     $(this.el).html(_.template(this.template, this.context));
     
     return this;
-  },
+  }
 });
 
 
@@ -205,7 +205,7 @@ var VopotvadminView = Backbone.View.extend({
     $(this.el).html(_.template(this.template, this.context));
     
     return this;
-  },
+  }
 });
 
 var VadminView = Backbone.View.extend({
